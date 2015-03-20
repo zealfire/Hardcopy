@@ -1,0 +1,6 @@
+<?php
+
+/**
+ * @file
+ * Provides a hardcopy format for generating PDFs.
+ */

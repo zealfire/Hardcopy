@@ -1,0 +1,23 @@
+services:
+  hardcopy.entity_manager:
+    class: Drupal\hardcopy\HardcopyEntityManager
+    arguments: ['@entity.manager', '@config.factory', '@url_generator', '@plugin.manager.hardcopyformat']
+  hardcopy.link_builder:
+    class: Drupal\hardcopy\HardcopyLinkBuilder
+    arguments: ['@config.factory', '@url_generator', '@plugin.manager.hardcopyformat']
+  hardcopy.css_include:
+    class: Drupal\hardcopy\HardcopyCssInclude
+    arguments: ['@config.factory', '@theme_handler']
+  hardcopy.subscriber.route:
+    class: Drupal\hardcopy\Routing\RouteSubscriber
+    arguments: ['@hardcopy.entity_manager']
+    tags:
+     - { name: event_subscriber }
+  plugin.manager.hardcopyformat:
+    class: Drupal\hardcopy\HardcopyFormatPluginManager
+    arguments: ['@container.namespaces', '@config.factory']
+  dom_crawler:
+    class: Wa72\HtmlPageDom\HtmlPageCrawler
+  hardcopy.link_extractor:
+    class: Drupal\hardcopy\LinkExtractor\InlineLinkExtractor
+    arguments: ['@dom_crawler', '@url_generator']

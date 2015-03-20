@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Provides printer friendly content entities.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\entity\Entity\EntityDisplay;
+
+/**
+ * Implements hook_permission().
+ */
+function hardcopy_permission() {
+  return array(
+    'view printer friendly versions' => array(
+      'title' => t('View Printer Friendly Versions'),
+    ),
+    'administer hardcopy' => array(
+      'title' => t('Administer Hardcopy'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+/*function hardcopy_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/hardcopy'] = array(
+    'title' => 'Hardcopy Configuration',
+    'route_name' => 'hardcopy.configure',
+  );
+
+  $items['admin/config/user-interface/hardcopy/%'] = array(
+    'title' => 'Hardcopy Format Configuration',
+    'route_name' => 'hardcopy.format_configure',
+  );
+
+  return $items;
+}*/
+
+/**
+ * Implements hook_theme().
+ */
+function hardcopy_theme() {
+  return array(
+    'hardcopy' => array(
+      'template' => 'hardcopy',
+      'pattern' => 'hardcopy__',
+      'variables' => array(
+        'header' => NULL,
+        'content' => NULL,
+        'footer' => NULL,
+      ),
+      'path' => drupal_get_path('module', 'hardcopy') . '/theme',
+    ),
+    'hardcopy_header' => array(
+      'template' => 'hardcopy-header',
+      'pattern' => 'hardcopy_header__',
+      'variables' => array(),
+      'path' => drupal_get_path('module', 'hardcopy') . '/theme',
+    ),
+    'hardcopy_footer' => array(
+      'template' => 'hardcopy-footer',
+      'pattern' => 'hardcopy_footer__',
+      'variables' => array(),
+      'path' => drupal_get_path('module', 'hardcopy') . '/theme',
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function hardcopy_entity_view_mode_info_alter(&$view_modes) {
+  $hardcopy_manager = \Drupal::service('hardcopy.entity_manager');
+  foreach($hardcopy_manager->getHardcopyEntities() as $entity_type => $entity_definition) {
+    // Add an additional view mode to this entity.
+    $view_modes[$entity_type]['hardcopy'] = array(
+      'label' => t('Hardcopy'),
+      'custom_settings' => FALSE,
+      'cache' => TRUE,
+    );
+  }
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function hardcopy_entity_view(EntityInterface $entity, EntityDisplay $display, $view_mode, $langcode) {
+  // Load the hardcopy manager and check if a hardcopy is available for this
+  // entity.
+  $hardcopy_manager = \Drupal::service('hardcopy.entity_manager');
+  $link_builder = \Drupal::service('hardcopy.link_builder');
+  if ($hardcopy_manager->isHardcopyEntity($entity)) {
+    // Add the built links to the entity being rendered.
+    $entity->content['links']['hardcopy'] = array(
+      '#theme' => 'links__entity__hardcopy',
+      '#links' => $link_builder->buildLinks($entity),
+    );
+  }
+}
+

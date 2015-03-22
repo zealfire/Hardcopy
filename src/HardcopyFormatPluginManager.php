@@ -8,8 +8,8 @@
 namespace Drupal\hardcopy;
 
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Plugin\DefaultPluginManager;
 
 /**
  * Manages hardcopy format plugins.

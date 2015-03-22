@@ -35,7 +35,7 @@ class HardcopyCssInclude implements HardcopyCssIncludeInterface {
    *
    * @param \Drupal\Core\Config\ConfigFactory $config_factory
    *  The configuration factory service.
-    @param \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler
+   * @param \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler
    *  The theme handler service.
    */
   public function __construct(ConfigFactory $config_factory, ThemeHandlerInterface $theme_handler) {

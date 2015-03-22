@@ -56,11 +56,12 @@ class HardcopyEntityManager implements HardcopyEntityManagerInterface {
   public function getHardcopyEntities() {
     $compatible_entities = $this->getCompatibleEntities();
     $entities = array();
-    foreach($this->configFactory->get('hardcopy.settings')->get('hardcopy_entities') as $entity_type) {
-      if (isset($compatible_entities[$entity_type])) {
+    $entity_type= $this->configFactory->get('hardcopy.settings')->get('hardcopy_entities');
+    //foreach($this->configFactory->get('hardcopy.settings')->get('hardcopy_entities') as $entity_type => $entity_definition) {
+      if (isset($compatible_entities[$entity_definition])) {
         $entities[$entity_type] = $compatible_entities[$entity_type];
       }
-    }
+    //}
     return $entities;
   }
 
@@ -80,7 +81,7 @@ class HardcopyEntityManager implements HardcopyEntityManagerInterface {
     if (empty($this->compatibleEntities)) {
       foreach($this->entityManager->getDefinitions() as $entity_type => $entity_definition) {
         // If this entity has a render controller, it has a hardcopy version.
-        if ($entity_definition->hasControllerClass('view_builder')) {
+        if ($entity_definition->hasHandlerClass('view_builder')) {
           $this->compatibleEntities[$entity_type] = $entity_definition;
         }
       }

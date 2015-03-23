@@ -15,7 +15,7 @@ services:
      - { name: event_subscriber }
   plugin.manager.hardcopyformat:
     class: Drupal\hardcopy\HardcopyFormatPluginManager
-    arguments: ['@container.namespaces', '@config.factory']
+    arguments: ['@container.namespaces', '@config.factory', '@module_handler']
   dom_crawler:
     class: Wa72\HtmlPageDom\HtmlPageCrawler
   hardcopy.link_extractor:

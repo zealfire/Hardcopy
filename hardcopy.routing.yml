@@ -10,3 +10,11 @@ hardcopy.format_configure:
     _form: '\Drupal\hardcopy\Form\FormatConfigurationForm'
   requirements:
     _permission: 'administer hardcopy'
+hardcopy.admin:
+  path: '/node/5/hardcopy'
+  defaults:
+    _controller: 'Drupal\hardcopy\Controller\HardcopyController::showFormat'
+    _title: 'Hardcopy'
+  requirements:
+    _permission: 'administer hardcopy'
+    _entity_access: 'entity.view'

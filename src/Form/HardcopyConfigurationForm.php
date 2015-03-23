@@ -108,7 +108,7 @@ class HardcopyConfigurationForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    //$this->config('hardcopy.settings')->set('hardcopy_entities', $form_state->getValue('hardcopy_entities'))->save();
+    \Drupal::configFactory()->getEditable('hardcopy.settings')->set('hardcopy_entities', $form_state->getValue('hardcopy_entities'))->save();
     \Drupal::configFactory()->getEditable('hardcopy.settings')->set('open_target_blank', $form_state->getValue('open_target_blank'))->save();
     \Drupal::configFactory()->getEditable('hardcopy.settings')->set('css_include', $form_state->getValue('css_include'))->save();
     \Drupal::configFactory()->getEditable('hardcopy.settings')->set('extract_links', $form_state->getValue('extract_links'))->save();

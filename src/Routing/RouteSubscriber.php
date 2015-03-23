@@ -54,7 +54,7 @@ class RouteSubscriber implements EventSubscriberInterface {
     $collection = $event->getRouteCollection();
     foreach($this->hardcopyEntityManager->getHardcopyEntities() as $entity_type => $entity_definition) {
       $route = new Route(
-        "/$entity_type/{entity}/hardcopy/{hardcopy_format}",
+        "/$entity_type/{entity}/hardcopy",
         array(
           '_controller' => 'Drupal\hardcopy\Controller\HardcopyController::showFormat',
           '_title' => 'Hardcopy',
@@ -71,5 +71,6 @@ class RouteSubscriber implements EventSubscriberInterface {
       );
       $collection->add('hardcopy.show_format.' . $entity_type, $route);
     }
+    return $collection;
   }
 }

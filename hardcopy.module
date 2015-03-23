@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\entity\Entity\EntityDisplay;
 
 /**
@@ -25,7 +26,7 @@ function hardcopy_permission() {
 /**
  * Implements hook_menu().
  */
-/*function hardcopy_menu() {
+function hardcopy_menu() {
   $items = array();
 
   $items['admin/config/user-interface/hardcopy'] = array(
@@ -39,7 +40,7 @@ function hardcopy_permission() {
   );
 
   return $items;
-}*/
+}
 
 /**
  * Implements hook_theme().
@@ -89,7 +90,7 @@ function hardcopy_entity_view_mode_info_alter(&$view_modes) {
 /**
  * Implements hook_entity_view().
  */
-function hardcopy_entity_view(EntityInterface $entity, EntityDisplay $display, $view_mode, $langcode) {
+function hardcopy_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode, $langcode) {
   // Load the hardcopy manager and check if a hardcopy is available for this
   // entity.
   $hardcopy_manager = \Drupal::service('hardcopy.entity_manager');

@@ -69,7 +69,7 @@ class HardcopyEntityManager implements HardcopyEntityManagerInterface {
    * {@inheritdoc}
    */
   public function isHardcopyEntity(EntityInterface $entity) {
-    return array_key_exists($entity->entityType(), $this->getHardcopyEntities());
+    return array_key_exists($entity->getEntityType(), $this->getHardcopyEntities());
   }
 
   /**

@@ -10,6 +10,8 @@ namespace Drupal\hardcopy\Plugin\HardcopyFormat;
 use Drupal\hardcopy\Plugin\HardcopyFormatBase;
 use Drupal\hardcopy\Annotation\HardcopyFormat;
 use Drupal\Core\Annotation\Translation;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -36,7 +38,7 @@ class PrintFormat extends HardcopyFormatBase {
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, array &$form_state) {
+  public function buildConfigurationForm(array &$form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $form['show_print_dialogue'] = array(
       '#type' => 'checkbox',
@@ -50,9 +52,9 @@ class PrintFormat extends HardcopyFormatBase {
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, array &$form_state) {
+  public function submitConfigurationForm(array &$form, FormStateInterface &$form_state) {
     $this->setConfiguration(array(
-      'show_print_dialogue' => $form_state['values']['show_print_dialogue'],
+      'show_print_dialogue' => $form_state->getValue('show_print_dialogue'),
     ));
   }
 

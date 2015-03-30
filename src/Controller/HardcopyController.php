@@ -58,15 +58,29 @@ class HardcopyController extends ControllerBase implements ContainerInjectionInt
    *  The hardcopy response.
    */
   public function showFormat(EntityInterface $entity, $hardcopy_format) {
-    if ($this->hardcopyFormatManager->getDefinition($hardcopy_format)) {
+    //if ($this->hardcopyFormatManager->getDefinition($hardcopy_format)) {
       $format = $this->hardcopyFormatManager->createInstance($hardcopy_format);
-      $content = $this->entityManager()->getViewBuilder($entity->entityType())->view($entity, 'hardcopy');
+      $content = $this->entityManager()->getViewBuilder($entity->getEntityTypeId())->view($entity, 'hardcopy');
       $format->setContent($content);
       return $format->getResponse();
-    }
-    else {
-      throw new NotFoundHttpException();
-    }
+    //}
+    //else {
+      //throw new NotFoundHttpException();
+    //}
+    //return array(
+      //'#markup' => t('Hello World!'),
+    //);
   }
+
+  public function demo(/*$entity1,$hardcopy_format*/) {
+  return array(
+      '#markup' => t('Hello World!'),
+    );
+ }
+ public function demo1($entity) {
+return array(
+      '#markup' => t('fuck World!'),
+    );
+ }
 }
 

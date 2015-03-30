@@ -36,7 +36,7 @@ class HardcopyFormatPluginManager extends DefaultPluginManager {
    */
   public function __construct(\Traversable $namespaces, ConfigFactory $config, ModuleHandlerInterface $module_handler) {
     $this->config = $config;
-    parent::__construct('Plugin/HardcopyFormat', $namespaces, $module_handler);
+    parent::__construct('Plugin/HardcopyFormat', $namespaces, $module_handler, 'Drupal\hardcopy\Plugin\HardcopyFormatInterface', 'Drupal\hardcopy\Annotation\HardcopyFormat');
   }
 
   /**

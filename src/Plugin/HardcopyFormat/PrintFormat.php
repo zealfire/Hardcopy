@@ -34,11 +34,12 @@ class PrintFormat extends HardcopyFormatBase {
       'show_print_dialogue' => TRUE,
     );
   }
+  public function calculateDependencies(){}
 
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array &$form, FormStateInterface $form_state) {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $config = $this->getConfiguration();
     $form['show_print_dialogue'] = array(
       '#type' => 'checkbox',
@@ -52,7 +53,13 @@ class PrintFormat extends HardcopyFormatBase {
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface &$form_state) {
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state){}
+
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     $this->setConfiguration(array(
       'show_print_dialogue' => $form_state->getValue('show_print_dialogue'),
     ));

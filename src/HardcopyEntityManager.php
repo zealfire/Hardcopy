@@ -55,12 +55,19 @@ class HardcopyEntityManager implements HardcopyEntityManagerInterface {
    */
   public function getHardcopyEntities() {
     $compatible_entities = $this->getCompatibleEntities();
+    //print_r($compatible_entities['node']);
+    /*foreach($compatible_entities as $entity_type => $entity_definition){
+      echo "first: ".$entity_type." second: ".$entity_definition."<br/>";
+    }*/
+    //echo "jola";
+    //print_r($compatible_entities);
     $entities = array();
-    $entity_type= $this->configFactory->get('hardcopy.settings')->get('hardcopy_entities');
-    //foreach($this->configFactory->get('hardcopy.settings')->get('hardcopy_entities') as $entity_type => $entity_definition) {
-      if (isset($compatible_entities[$entity_definition])) {
-        $entities[$entity_type] = $compatible_entities[$entity_type];
-      }
+    //$entity_type= $this->configFactory->get('hardcopy.settings')->get('hardcopy_entities');
+    //foreach($this->configFactory->get('hardcopy.settings')->get('hardcopy_entities') as $entity_type) {
+      //if (isset($compatible_entities[$entity_definition])) {
+       // echo $entity_type;
+        $entities['node'] = $compatible_entities['node'];
+      //}
     //}
     return $entities;
   }

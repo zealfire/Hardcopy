@@ -11,6 +11,7 @@ use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\hardcopy\HardcopyCssIncludeInterface;
+use Drupal\Core\Form\FormStateInterface;
 use wa72\htmlpagedom\HtmlPageCrawler;
 use Drupal\hardcopy\LinkExtractor\LinkExtractorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -62,7 +63,7 @@ abstract class HardcopyFormatBase extends PluginBase implements HardcopyFormatIn
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, array $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id,  $plugin_definition) {
     return new static(
       $configuration, $plugin_id, $plugin_definition,
       $container->get('config.factory'),
@@ -110,7 +111,7 @@ abstract class HardcopyFormatBase extends PluginBase implements HardcopyFormatIn
   /**
    * {@inheritdoc}
    */
-  public function validateConfigurationForm(array &$form, array &$form_state) {}
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {}
 
   /**
    * {@inheritdoc}
@@ -155,7 +156,7 @@ abstract class HardcopyFormatBase extends PluginBase implements HardcopyFormatIn
     }
 
     // Eeeew. @todo remove this so we can unit test this method.
-    system_page_build($build);
+    //system_page_build($build);
 
     return $build;
   }
@@ -171,7 +172,7 @@ abstract class HardcopyFormatBase extends PluginBase implements HardcopyFormatIn
     $content = $this->buildContent();
     $page = array(
       '#theme' => 'html',
-      '#page_object' => new HtmlPage(render($content)),
+      '#page_object' => (render($content)),
     );
     $rendered_page = render($page);
 

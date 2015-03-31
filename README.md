@@ -1,2 +1,2 @@
 # hardcopy
-Porting work done on hardcopy by splatio to present D8  
+Porting to present D8  

@@ -172,7 +172,7 @@ abstract class HardcopyFormatBase extends PluginBase implements HardcopyFormatIn
     $content = $this->buildContent();
     $page = array(
       '#theme' => 'html',
-      '#page_object' => new Html(render($content)),
+      '#page_object' => new HtmlPage(render($content)),
     );
     $rendered_page = render($page);
 

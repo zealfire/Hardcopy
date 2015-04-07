@@ -1,6 +1,0 @@
-hardcopy_entities:
-   node: 'node'
-   comment: 'comment'
-open_target_blank: TRUE
-css_include: ''
-extract_links: ''

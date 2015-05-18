@@ -90,7 +90,7 @@ $entity_type='hardcopy';
       echo "<br>mango<br>";
       var_dump($this->request->attributes->keys());
       if ($this->request->attributes->has("node")) 
-        echo "<br>fucking yeah<br>";
+        echo "<br> yeah<br>";
       return array(
         '#theme' => 'links__entity__hardcopy',
         '#links' => $this->linkBuilder->buildLinks($this->request->attributes->get("node")),

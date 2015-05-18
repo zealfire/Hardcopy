@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a book tree.
+ *
+ * Returns HTML for a wrapper for a book sub-tree.
+ *
+ * Available variables:
+ *   - tree: An HTML string containing the tree's items.
+ *
+ * @see template_preprocess_book_tree()
+ *
+ * @ingroup themeable
+ */
+#}
+<!DOCTYPE html>
+<html>
+<head>
+<base href="{{ base_url }}" />
+<link type="text/css" rel="stylesheet" href="hardcopy/css/drupal-hardcopy.css" />
+</head>
+<body>
+{{ header }}
+{{ content }}
+{{ footer }}
+</body>
+</html>

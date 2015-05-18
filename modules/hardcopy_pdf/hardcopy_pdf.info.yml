@@ -1,0 +1,8 @@
+name: Hardcopy PDF
+type: module
+description: 'Provides a hardcopy format for generating PDFs.'
+package: Hardcopy
+core: 8.x
+dependencies:
+  - hardcopy
+  - pdf_api

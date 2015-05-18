@@ -1,0 +1,10 @@
+hardcopy.configure:
+  route_name: hardcopy.configure
+  title: 'Configuration'
+  tab_root_id: hardcopy.configure
+
+hardcopy.format_configure:
+  route_name: hardcopy.format_configure
+  title: 'Hardcopy Format Configuration'
+  tab_root_id: hardcopy.configure
+  derivative: 'Drupal\hardcopy\Plugin\Derivative\HardcopyFormatConfigureTabs'

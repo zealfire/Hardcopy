@@ -1,0 +1,10 @@
+hardcopy.configure:
+  title: Hardcopy
+  description: 'Manage your hardcopy module'
+  parent: system.admin_structure
+  route_name: hardcopy.configure
+#hardcopy.show_format.node:
+ # title: PrintNow
+  #weight: 4
+  #route_name: hardcopy.show_format.node
+  #base_route: node.view

@@ -65,10 +65,14 @@ class HardcopyLinkBuilder implements HardcopyLinkBuilderInterface {
       //print_r("<br>zealfire ".$this->urlGenerator->generateFromRoute('hardcopy.show_format.' . 'node', array('hardcopy_format' => $key, 'entity' => 1)));
       echo "<br>";
       echo "kite<br>".$entity->id()."break<br>".$entity->getEntityTypeId()."<br>";
-      $links[$key] = array(
+      /*$links[$key] = array(
         'title' => t('<a href="!url">%title</a>',array('%title' => $definition['title'],
         '!url' => $this->urlGenerator->generateFromRoute('hardcopy.show_format.' . $entity->getEntityTypeId(), array('hardcopy_format' => $key, 'entity' => $entity->id())))
-      ));
+      ));*/
+$links[$key] = array(
+        'title' => $definition['title'],
+        'href' => $this->urlGenerator->generateFromRoute('hardcopy.show_format.' . $entity->entityType(), array('hardcopy_format' => $key, 'entity' => $entity->id())),
+      );
       // Add target "blank" if the configuration option is set.
       if ($this->configFactory->get('hardcopy.settings')->get('open_target_blank')) {
         $links[$key]['attributes']['target'] = '_blank';

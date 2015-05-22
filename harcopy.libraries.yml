@@ -1,5 +1,0 @@
-drupal-hardcopy:
-  version: VERSION
-  css:
-    theme:
-      css/hardcopy.theme.css: {}

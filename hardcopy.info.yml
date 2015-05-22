@@ -1,6 +1,0 @@
-name: Hardcopy
-type: module
-description: 'Generates a printer-friendly version of Drupal content entities.'
-package: Hardcopy
-core: 8.x
-configure: hardcopy.configure

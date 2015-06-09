@@ -1,12 +1,12 @@
-# Schema for the configuration files of the Hardcopy module.
+# Schema for the configuration files of the Printable module.
 
-hardcopy.settings:
+printable.settings:
   type: mapping
-  label: 'Hardcopy settings'
+  label: 'Printable settings'
   mapping:
-    hardcopy_entities:
+    printable_entities:
       type: sequence
-      label: 'Hardcopy Enabled Entities'
+      label: 'Printable Enabled Entities'
       sequence:
         - type: string
           label: 'Entity'
